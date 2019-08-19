@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { StyledTetrisWrapper, StyledTetris } from "./styles/StyledTetris";
 import { createStage, checkCollision } from "../gameHelpers";
 
-// Custom Hooks
 import { useInterval } from "../hooks/useInterval";
 import { usePlayer } from "../hooks/usePlayer";
 import { useStage } from "../hooks/useStage";
@@ -21,9 +20,6 @@ const Tetris = () => {
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(
     rowsCleared
   );
-
-  console.log("re-render");
-
   const movePlayer = dir => {
     if (!checkCollision(player, stage, { x: dir, y: 0 })) {
       updatePlayerPos({ x: dir, y: 0 });
@@ -39,7 +35,6 @@ const Tetris = () => {
   };
 
   const startGame = () => {
-    // Reset everything
     setStage(createStage());
     setDropTime(1000);
     resetPlayer();
@@ -59,7 +54,6 @@ const Tetris = () => {
       updatePlayerPos({ x: 0, y: 1, collided: false });
     } else {
       if (player.pos.y < 1) {
-        console.log("GAME OVER!!!");
         setGameOver(true);
         setDropTime(null);
       }
