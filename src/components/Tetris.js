@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import Sound from "react-sound";
 import { StyledTetrisWrapper, StyledTetris } from "./styles/StyledTetris";
 import { createStage, checkCollision } from "../gameHelpers";
+
+import music from "../music/Tetris.mp3";
 
 import { useInterval } from "../hooks/useInterval";
 import { usePlayer } from "../hooks/usePlayer";
@@ -91,6 +94,7 @@ const Tetris = () => {
       onKeyUp={keyUp}
     >
       <StyledTetris>
+        <Sound url={music} playStatus={"PLAYING"} autoLoad={true} loop={true} />
         <Stage stage={stage} />
         <aside>
           {gameOver ? (
